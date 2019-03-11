@@ -1,27 +1,39 @@
-# news_spider
+# News_spider
 
-NewsArticle_spider
-This bot is used to collect information from articles on any topic and compile the information for data analysis.
+A bot that collects news articles on any specified topic.
 
-Getting Started
-In your virtualenv git clone
-pip install -r requirement.txt
+## Getting Started
 
-Prerequisites
-- virtualenv
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-Built With
-News API - the api used to collect the urls for articles
-BeautifulSoup4 - extract specific content from the webpage
+### Prerequisites
 
-Contributing
-Please read CONTRIBUTING.md for details on our code of conduct, and the process for submitting pull requests to us.
+What things you need to install the software and how to install them
 
-Authors
-Anthony Dang- Initial work
+virtualenv -> pip install virtualenv
 
-License
-This project is licensed under the MIT License - see the LICENSE.md file for details
+### Installing
 
-Acknowledgments
-Hat tip to anyone whose code was used
+git clone <url to project>
+pip install -r requirements.txt
+
+## Built With
+
+* [NewsAPI](https://newsapi.org/docs) - The API to collect article urls
+* [BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - Data Scraper
+
+## Authors
+
+* **Anthony Dang** - *Initial work* - (https://github.com/AnthonyJordanDang)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
