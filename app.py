@@ -1,7 +1,5 @@
-
 import pandas as pd
 
-# import regular expressions capability
 import re
 
 #import functions for the website extractions
@@ -12,18 +10,22 @@ from modules.news_classes import Website, CBC, GlobeAndMail, Fortune, BusinessIn
 
 #Data required from the user
 keywords_raw = input("What are you web crawling for? ")
+
 #removes special characters and replaces spaces with hyphen
 keywords = re.sub('[^a-zA-Z]+', '-',  re.sub('[^a-zA-Z]+', ' ', keywords_raw.strip()) .strip()) 
  
 size_raw = int(input("How many articles do you want to extract? (minimum: 10) "))
 
-while size_raw < 10:
+newsOutlet_len = 10
+#Makes sure the size input is greater than 10
+while size_raw < newsOutlet_len:
     print('Oops! Please try again')
-    size_raw = int(input("How many articles do you want to extract? (minimum: 10) "))
-    if size_raw > 10:
+    size_raw = int(input("How many articles do you want to extract? (minimum: " + newsOutlet_len + ") "))
+    if size_raw > newsOutlet_len:
         break
-    
-size = round(size_raw / 10)
+
+#sets the size for each news source
+size = round(size_raw / newsOutlet_len)
 
 #creating objects for each news source
 cbc = CBC('cbc-news', keywords, size)
