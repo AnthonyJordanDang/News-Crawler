@@ -8,14 +8,13 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-virtualenv -> pip install virtualenv
+virtualenv - pip install virtualenv
 
 ### Installing
 
-git clone <url to project>
-pip install -r requirements.txt
+1. git clone <url to repository>
+
+2. pip install -r requirements.txt
 
 ## Built With
 
@@ -32,6 +31,3 @@ See also the list of [contributors](https://github.com/your/project/contributors
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
