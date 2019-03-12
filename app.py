@@ -6,7 +6,7 @@ import re
 from modules.crawl_process import getJSON, getArticleURLs, contentOfSource, refineData, getData
 
 # import the classes for each news source
-from modules.news_classes import Website, CBC, GlobeAndMail, Fortune, BusinessInsider, CNN, DailyMail, FinancialPost, FoxNews, NBCNews, TheNewYorkTimes
+from modules.news_classes import NewsWebsite 
 
 #Data required from the user
 keywords_raw = input("What are you web crawling for? ")
@@ -14,6 +14,18 @@ keywords_raw = input("What are you web crawling for? ")
 #removes special characters and replaces spaces with hyphen
 keywords = re.sub('[^a-zA-Z]+', '-',  re.sub('[^a-zA-Z]+', ' ', keywords_raw.strip()) .strip()) 
  
+#html of various websites that contain article content
+cbc_html = [['div', 'class', 'story']]
+globeAndMail_html = [['p', 'class', 'c-article-body__text']]
+fortune_html = [['div', 'id', 'article-body'],['div', 'class', 'article content']]
+businessInsider_html = [['section', 'class', 'post-content typography ']]
+dailyMail_html = [['div', 'itemprop', 'articleBody']]
+financialPost_html = [['div', 'class', 'story-content']]
+foxNews_html = [['div', 'class', 'article-content']]
+nbcNews_html = [['div', 'class', 'body___']]
+cnn_html = [['div', 'class', 'l-container']]
+theNewYorkTimes_html = [['div', 'class', 'css-1fanzo5 StoryBodyCompanionColumn']]
+
 size_raw = int(input("How many articles do you want to extract? (minimum: 10) "))
 
 newsOutlet_len = 10
@@ -28,16 +40,16 @@ while size_raw < newsOutlet_len:
 size = round(size_raw / newsOutlet_len)
 
 #creating objects for each news source
-cbc = CBC('cbc-news', keywords, size)
-globeandmail = GlobeAndMail('the-globe-and-mail', keywords, size)
-fortune = Fortune('fortune', keywords, size)
-business_insider = BusinessInsider('business-insider', keywords, size)
-daily_mail = DailyMail('daily-mail', keywords, size)
-financial_post = FinancialPost('financial-post', keywords, size)
-fox_news = FoxNews('fox-news', keywords, size)
-nbc_news = NBCNews('nbc-news', keywords, size)
-cnn = CNN('cnn', keywords, size)
-thenewyorktimes = TheNewYorkTimes('the-new-york-times', keywords, size)
+cbc = NewsWebsite('cbc-news', keywords, size, cbc_html)
+globeandmail = NewsWebsite('the-globe-and-mail', keywords, size, globeAndMail_html)
+fortune = NewsWebsite('fortune', keywords, size, fortune_html)
+business_insider = NewsWebsite('business-insider', keywords, size, businessInsider_html)
+daily_mail = NewsWebsite('daily-mail', keywords, size, dailyMail_html)
+financial_post = NewsWebsite('financial-post', keywords, size, financialPost_html)
+fox_news = NewsWebsite('fox-news', keywords, size, foxNews_html)
+nbc_news = NewsWebsite('nbc-news', keywords, size, nbcNews_html)
+cnn = NewsWebsite('cnn', keywords, size, cnn_html)
+thenewyorktimes = NewsWebsite('the-new-york-times', keywords, size, theNewYorkTimes_html)
 
 #collects data from each news outlet
 cbc_data = getData(cbc)
