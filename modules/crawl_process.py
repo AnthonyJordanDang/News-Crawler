@@ -55,7 +55,7 @@ def getArticleURLs(api_url):
     return(url_list)
 
 #collects the content of each article into a list
-def contentOfSource(api_url, html_element, html_attribute, html_attributeName ):
+def contentOfSource(api_url, htmlSearch):
     
     """ Return list of content from the article urls
 
@@ -90,21 +90,36 @@ def contentOfSource(api_url, html_element, html_attribute, html_attributeName ):
                 raise
         
         soup = BeautifulSoup(html, 'lxml')
-        html_attributeName_regex = re.compile('.*' + html_attributeName + '*')
-        result = soup.findAll(html_element, {html_attribute:html_attributeName_regex})
         
-        # indicates the app is crawling through specified url
-        print('...crawling through '+url, flush = True)
-        
-        for res in result:
-            content_text = res.text.strip() 
-            articleContent = articleContent + content_text 
+        #Loops through list of potential html to search for article content
+        for html in htmlSearch:
+            element_index = 0
+            attribute_index = 1
+            attributeName_index = 2
             
-        #if there is nothing in the content print no content found
-        if articleContent == '':
-            print('.......no content found on this page!', flush = True)
+            #variable for attribute name that contains
+            html_attributeName_regex = re.compile('.*' + html[attributeName_index] + '*')
 
-            
+            result = soup.findAll(html[element_index], {html[attribute_index]:html_attributeName_regex})
+
+            for res in result:
+                content_text = res.text.strip() 
+                articleContent = articleContent + content_text 
+
+            #if there is nothing in the content continue the loop 
+            if articleContent == "":
+                continue
+            else:
+                # indicates the app is crawling through specified url
+                print('...crawling through '+url, flush = True)
+        
+                break
+
+        #checks if article content was found
+        if articleContent == '':
+            print("...No content found on this page!", flush = True)
+
+        #adds the content collected to the list of article content
         articleContent_list.append(articleContent)
         
         sleep(randint(1,4))

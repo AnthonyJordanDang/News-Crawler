@@ -25,7 +25,9 @@ class CBC(Website):
         Website.__init__(self, source_id, keyword, size)    
 
     def getArticleContent(obj):
-        articleContent_list = contentOfSource(obj.url, 'div', 'class', 'story')
+        #possible html that article content could reside within
+        htmlSearch = [['div', 'class', 'story']]
+        articleContent_list = contentOfSource(obj.url, htmlSearch)
         return (articleContent_list)
     
         
@@ -35,7 +37,10 @@ class GlobeAndMail(Website):
         Website.__init__(self, source_id, keyword, size)    
 
     def getArticleContent(obj):
-        articleContent_list = contentOfSource(obj.url, 'p', 'class', 'c-article-body__text')
+        #possible html that article content could reside within
+        htmlSearch = [['p', 'class', 'c-article-body__text']]
+        articleContent_list = contentOfSource(obj.url, htmlSearch)
+
         return (articleContent_list)
     
 #class to get Data from Fortune
@@ -44,7 +49,10 @@ class Fortune(Website):
         Website.__init__(self, source_id, keyword, size)    
 
     def getArticleContent(obj):
-        articleContent_list = contentOfSource(obj.url, 'div', 'id', 'article-body')
+        #possible html that article content could reside within
+        htmlSearch = [['div', 'id', 'article-body'],['div', 'class', 'article content']]
+        articleContent_list = contentOfSource(obj.url, htmlSearch)
+
         return (articleContent_list)
 
 #class to get Data from BusinessInsider Website
@@ -53,7 +61,11 @@ class BusinessInsider(Website):
         Website.__init__(self, source_id, keyword, size)    
 
     def getArticleContent(obj):
-        articleContent_list = contentOfSource(obj.url, 'section', 'class', 'post-content typography ')
+        #possible html that article content could reside within
+        htmlSearch = [['section', 'class', 'post-content typography ']]
+        articleContent_list = contentOfSource(obj.url, htmlSearch)
+
+
         return (articleContent_list)
     
 #class to get Data from DailyMail Website
@@ -62,7 +74,10 @@ class DailyMail(Website):
         Website.__init__(self, source_id, keyword, size)    
 
     def getArticleContent(obj):
-        articleContent_list = contentOfSource(obj.url, 'div', 'itemprop', 'articleBody')
+        #possible html that article content could reside within
+        htmlSearch = [['div', 'itemprop', 'articleBody']]
+        articleContent_list = contentOfSource(obj.url, htmlSearch)
+
         return (articleContent_list)
 
 #class to get Data from FinancialPost Website
@@ -71,8 +86,14 @@ class FinancialPost(Website):
         Website.__init__(self, source_id, keyword, size)    
 
     def getArticleContent(obj):
-        articleContent_list = contentOfSource(obj.url, 'div', 'class', 'story-content')
+        #articleContent_list = contentOfSource(obj.url, 'div', 'class', 'story-content')
+        #possible html that article content could reside within
+        htmlSearch = [['div', 'class', 'story-content']]
+        articleContent_list = contentOfSource(obj.url, htmlSearch)
+
+ 
         return (articleContent_list)
+
 
 
 class FoxNews(Website):   
@@ -80,7 +101,12 @@ class FoxNews(Website):
         Website.__init__(self, source_id, keyword, size)    
 
     def getArticleContent(obj):
-        articleContent_list = contentOfSource(obj.url, 'div', 'class', 'article-content')
+        #articleContent_list = contentOfSource(obj.url, 'div', 'class', 'article-content')
+        #possible html that article content could reside within
+        htmlSearch = [['div', 'class', 'article-content']]
+        articleContent_list = contentOfSource(obj.url, htmlSearch)
+
+
         return (articleContent_list)
     
 class NBCNews(Website):   
@@ -88,7 +114,13 @@ class NBCNews(Website):
         Website.__init__(self, source_id, keyword, size)    
 
     def getArticleContent(obj):
-        articleContent_list = contentOfSource(obj.url, 'div', 'class', 'body___')
+        #articleContent_list = contentOfSource(obj.url, 'div', 'class', 'body___')
+        #possible html that article content could reside within
+        htmlSearch = [['div', 'class', 'body___']]
+        articleContent_list = contentOfSource(obj.url, htmlSearch)
+
+
+
         return (articleContent_list)
     
 class CNN(Website):   
@@ -96,7 +128,12 @@ class CNN(Website):
         Website.__init__(self, source_id, keyword, size)    
 
     def getArticleContent(obj):
-        articleContent_list = contentOfSource(obj.url, 'div', 'class', 'l-container')
+        #articleContent_list = contentOfSource(obj.url, 'div', 'class', 'l-container')
+        #possible html that article content could reside within
+        htmlSearch = [['div', 'class', 'l-container']]
+        articleContent_list = contentOfSource(obj.url, htmlSearch)
+
+
         return (articleContent_list)
     
 class TheNewYorkTimes(Website):   
@@ -104,7 +141,12 @@ class TheNewYorkTimes(Website):
         Website.__init__(self, source_id, keyword, size)    
 
     def getArticleContent(obj):
-        articleContent_list = contentOfSource(obj.url, 'div', 'class', 'css-1fanzo5 StoryBodyCompanionColumn')
+        #articleContent_list = contentOfSource(obj.url, 'div', 'class', 'css-1fanzo5 StoryBodyCompanionColumn')
+        #possible html that article content could reside within
+        htmlSearch = [['div', 'class', 'css-1fanzo5 StoryBodyCompanionColumn']]
+        articleContent_list = contentOfSource(obj.url, htmlSearch)
+
+
         return (articleContent_list)
 
 
