@@ -160,7 +160,7 @@ def refineData(articleContent_list, api_url):
     return (article_details_clean)
 
 #returns list of article data
-def getData(api_url, html):
+def getArticleData(api_url, html):
 
     content_list = contentOfSource(api_url, html) 
     data = refineData(content_list, api_url)

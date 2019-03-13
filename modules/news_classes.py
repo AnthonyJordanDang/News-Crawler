@@ -1,4 +1,4 @@
-from modules.crawl_process import getJSON, getArticleURLs, contentOfSource, refineData, getData
+from modules.crawl_process import getJSON, getArticleURLs, contentOfSource, refineData, getArticleData
 #News sources that cannot be scraped: abcnews, huffingtonpost
 
 class NewsWebsite:
@@ -16,14 +16,10 @@ class NewsWebsite:
        'pageSize=' + str(self.size) + '&'
        'apiKey=e344a840b71c4e4ba25426f528f8e00e')
 
-        self.data = getData(self.url, html) 
+        self.data = getArticleData(self.url, html) 
 
-    def getData(obj):
-        return obj.data 
-    
-
-    def getURL(obj):
-        return obj.url
+    def getURL(self):
+        return self.url
 
         
         
