@@ -125,7 +125,7 @@ def contentOfSource(api_url, htmlSearch):
         sleep(randint(1,4))
     return articleContent_list
 
-#deletes unnecessary dict values and replaces api content with collected content
+#deletes unnecessary details provided by the API 
 def refineData(articleContent_list, api_url):
     
     """ Return dict of all articles with their content
@@ -159,20 +159,24 @@ def refineData(articleContent_list, api_url):
     
     return (article_details_clean)
 
-#function that contains methods mentioned above
-def getData(obj):
-    """ 
-    Consolidation of all the three above function
-    """
-    api_url = obj.getURL()
-    json = getJSON(api_url)
-    content_list = obj.getArticleContent()
+#returns list of article data
+def getData(api_url, html):
+
+    content_list = contentOfSource(api_url, html) 
     data = refineData(content_list, api_url)
     
     # indicates if there are any articles found with the given topic
     if data == []:
-        #print statement for debugging purposes
-        #print('Data Extracted from ' + obj.source_id + '!', flush = True)
         print('No articles found!', flush = True)
        
     return data
+
+
+
+
+
+
+
+
+
+

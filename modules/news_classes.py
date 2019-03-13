@@ -1,7 +1,6 @@
 from modules.crawl_process import getJSON, getArticleURLs, contentOfSource, refineData, getData
 #News sources that cannot be scraped: abcnews, huffingtonpost
 
-#Superclass
 class NewsWebsite:
     
     def __init__(self, source_id, keyword, size, html):
@@ -17,9 +16,10 @@ class NewsWebsite:
        'pageSize=' + str(self.size) + '&'
        'apiKey=e344a840b71c4e4ba25426f528f8e00e')
 
-    def getArticleContent(obj):
-        articleContent_list = contentOfSource(obj.url, obj.html)
-        return (articleContent_list)
+        self.data = getData(self.url, html) 
+
+    def getData(obj):
+        return obj.data 
     
 
     def getURL(obj):

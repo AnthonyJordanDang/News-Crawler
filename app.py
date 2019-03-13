@@ -26,9 +26,12 @@ nbcNews_html = [['div', 'class', 'body___']]
 cnn_html = [['div', 'class', 'l-container']]
 theNewYorkTimes_html = [['div', 'class', 'css-1fanzo5 StoryBodyCompanionColumn']]
 
+#Asks user for number of articles desired
 size_raw = int(input("How many articles do you want to extract? (minimum: 10) "))
 
+#Number of news sources
 newsOutlet_len = 10
+
 #Makes sure the size input is greater than 10
 while size_raw < newsOutlet_len:
     print('Oops! Please try again')
@@ -51,19 +54,19 @@ nbc_news = NewsWebsite('nbc-news', keywords, size, nbcNews_html)
 cnn = NewsWebsite('cnn', keywords, size, cnn_html)
 thenewyorktimes = NewsWebsite('the-new-york-times', keywords, size, theNewYorkTimes_html)
 
-#collects data from each news outlet
-cbc_data = getData(cbc)
-globeandmail_data = getData(globeandmail)
-fortune_data = getData(fortune)
-business_insider_data = getData(business_insider)
-daily_mail_data = getData(daily_mail)
-financial_post_data = getData(financial_post)
-fox_news_data = getData(fox_news)
-nbc_news_data = getData(nbc_news)
-cnn_data = getData(cnn)
-thenewyorktimes_data = getData(thenewyorktimes)
+# Get Data attribute from each object
+cbc_data = cbc.getData 
+globeandmail_data = globeandmail.getData 
+fortune_data = fortune.getData
+business_insider_data = business_insider.getData 
+daily_mail_data = daily_mail.getData
+financial_post_data = financial_post.getData 
+fox_news_data = fox_news.getData
+nbc_news_data = nbc_news.getData
+cnn_data = cnn.getData
+thenewyorktimes_data = thenewyorktimes.getData
 
-print('Congrats! The data scrape has been successful! :)', flush = True)
+print('Congrats! Crawl Complete! :)', flush = True)
 
 #Concatenation of all the data collection from the news sources
 articles_data = cbc_data \
@@ -80,7 +83,7 @@ articles_data = cbc_data \
 #Convert the dictionary into a Dataframe for analysis
 df = pd.DataFrame.from_dict(articles_data)    
 
-#handles if the url cannot be opened, and filled content value as null
+#catch if data file is open and cannot be modified
 try:
     df.to_csv('Data/data.csv')
 except PermissionError:
