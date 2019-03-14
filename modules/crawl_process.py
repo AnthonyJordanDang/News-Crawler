@@ -122,7 +122,7 @@ def contentOfSource(api_url, htmlSearch):
         #adds the content collected to the list of article content
         articleContent_list.append(articleContent)
         
-        sleep(randint(1,4))
+        sleep(randint(1,2))
     return articleContent_list
 
 #deletes unnecessary details provided by the API 
