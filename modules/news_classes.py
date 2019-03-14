@@ -18,8 +18,6 @@ class NewsWebsite:
 
         self.data = getArticleData(self.url, html) 
 
-    def getURL(self):
-        return self.url
 
         
         
