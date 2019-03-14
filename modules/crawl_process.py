@@ -110,11 +110,11 @@ def contentOfSource(api_url, htmlSearch):
             if articleContent == "":
                 continue
             else:
-                # indicates the app is crawling through specified url
-                print('...crawling through '+url, flush = True)
-        
                 break
 
+        # indicates the app is crawling through specified url
+        print('...crawling through '+url, flush = True)
+        
         #checks if article content was found
         if articleContent == '':
             print("...No content found on this page!", flush = True)
