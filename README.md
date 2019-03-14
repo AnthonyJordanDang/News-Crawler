@@ -1,4 +1,4 @@
-# News_spider
+# News Crawler
 
 A bot that collects news articles on any specified topic.
 
